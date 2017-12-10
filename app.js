@@ -22,9 +22,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', index);
-app.use('/book',book);
+app.use('/',book);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -43,4 +41,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
 });
 
-module.exports = app;
+app.listen(3000,function () {
+  console.log("app listening at http:localhost:3000")
+})

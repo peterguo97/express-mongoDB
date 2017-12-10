@@ -23,6 +23,21 @@ module.exports = {
                 .exec()
     },
     addBook(book){
-        return Book.create(book)
+        return new Promise(function(resolve,reject) {
+            let bookDetail = new Book({
+                title: book.title,
+                summary: book.summary,
+                price: book.price
+            })
+            bookDetail.save(function (err) {
+                if(err){
+                    reject(err)
+                }
+                else{
+                    console.log("Save success")
+                    resolve()
+                }
+            })
+        })
     }
 }
